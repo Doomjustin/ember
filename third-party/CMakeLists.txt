@@ -34,4 +34,5 @@ target_link_libraries(base
         gsl::gsl
         fmt::fmt
         spdlog::spdlog
+        doctest::doctest
 )

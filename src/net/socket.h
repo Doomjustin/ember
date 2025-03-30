@@ -20,6 +20,8 @@ public:
 
     constexpr bool is_valid() const noexcept { return socket != INVALID_SOCKET; }
 
+    constexpr int id() const noexcept { return socket; }
+
 private:
     static constexpr int INVALID_SOCKET = -1;
 

@@ -1,6 +1,10 @@
 #include "socket.h"
+#include "posix.h"
 
 #include <gsl/gsl>
+#include <spdlog/spdlog.h>
+
+#include <unistd.h>
 #include <utility>
 
 namespace ember::net {
@@ -33,6 +37,9 @@ Socket::~Socket()
 void Socket::close()
 {
     Expects(is_valid());
+    posix::close(socket);
+    socket = INVALID_SOCKET;
+    spdlog::trace("Socket[] closed.", socket);
 }
 
 } // namespace ember::net
