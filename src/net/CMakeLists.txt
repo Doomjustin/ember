@@ -1,0 +1,16 @@
+add_library(ember_net 
+    STATIC
+        socket.cpp
+        socket.h
+        utility.cpp
+        utility.h
+)
+
+target_include_directories(ember_net INTERFACE ${CMAKE_CURRENT_LIST_DIR})
+
+target_link_libraries(ember_net
+    PUBLIC
+        ember_base
+)
+
+add_library(ember::net ALIAS ember_net)

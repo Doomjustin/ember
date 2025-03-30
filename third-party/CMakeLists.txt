@@ -18,7 +18,7 @@ target_compile_features(spdlog INTERFACE cxx_std_23)
 
 add_library(doctest INTERFACE)
 target_compile_features(doctest INTERFACE cxx_std_23)
-target_include_directories(doctest INTERFACE doctest/docktest)
+target_include_directories(doctest INTERFACE doctest/doctest)
 target_compile_features(doctest INTERFACE cxx_std_23)
 
 add_library(doctest::doctest ALIAS doctest)
@@ -34,5 +34,4 @@ target_link_libraries(base
         gsl::gsl
         fmt::fmt
         spdlog::spdlog
-        doctest::doctest
 )
