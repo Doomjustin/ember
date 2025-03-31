@@ -5,12 +5,11 @@
 
 namespace ember::net {
 
-class OnceEvent : public CountEvent {
+class OnceEvent: public CountEvent {
 public:
     OnceEvent(int id)
       : CountEvent{ id, 1 }
-    {
-    }
+    {}
 
     ~OnceEvent() = default;
 };

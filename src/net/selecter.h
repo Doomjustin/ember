@@ -8,7 +8,7 @@
 
 namespace ember::net {
 
-class Selecter final : public EventScheduler {
+class Selecter final: public EventScheduler {
 public:
     ~Selecter() = default;
 

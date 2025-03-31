@@ -49,7 +49,8 @@ public:
         return *this;
     }
 
-    template <has_id T> Self bind(const T& io) noexcept
+    template <has_id T> 
+    Self bind(const T& io) noexcept
     {
         id_ = io.id();
         return *this;

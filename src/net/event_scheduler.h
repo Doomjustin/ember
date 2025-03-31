@@ -10,7 +10,7 @@
 
 namespace ember::net {
 
-class EventScheduler : public Noncopyable {
+class EventScheduler: Noncopyable {
 public:
     virtual ~EventScheduler() = default;
 

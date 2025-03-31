@@ -11,13 +11,11 @@ namespace ember::net {
 
 Socket::Socket(int socket)
   : socket_(socket)
-{
-}
+{}
 
 Socket::Socket(Socket&& other) noexcept
   : socket_{ std::exchange(other.socket_, INVALID_SOCKET) }
-{
-}
+{}
 
 Socket& Socket::operator=(Socket&& other) noexcept
 {

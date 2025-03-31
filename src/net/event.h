@@ -8,7 +8,7 @@
 
 namespace ember::net {
 
-class Event : public Noncopyable {
+class Event: Noncopyable {
 public:
     using ReadCallback = std::function<void(const std::system_error*)>;
     using WriteCallback = std::function<void(const std::system_error*)>;

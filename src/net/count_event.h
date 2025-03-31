@@ -5,7 +5,7 @@
 
 namespace ember::net {
 
-class CountEvent : public Event {
+class CountEvent: public Event {
 public:
     CountEvent(int id, int count);
 
