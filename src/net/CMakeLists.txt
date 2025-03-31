@@ -3,11 +3,14 @@ add_library(ember_net
         count_event.cpp
         count_event.h
         endpoint.h
+        event_builder.cpp
+        event_builder.h
         event_loop.h
         event_scheduler.cpp
         event_scheduler.h
         event.cpp
         event.h
+        forever_event.h
         once_event.h
         posix.cpp
         posix.h

@@ -1,5 +1,4 @@
-#include "count_event.h"
-#include "once_event.h"
+#include "event_builder.h"
 #include "selecter.h"
 
 #include <fmt/base.h>
@@ -18,11 +17,18 @@ int main(int argc, char* argv[])
 {
     using namespace ember::net;
 
-    auto once_event = std::make_unique<OnceEvent>(1);
-    once_event->write_callback(on_write);
+    EventBuilder builder{};
+    auto once_event = builder
+                      .bind(STDOUT_FILENO)
+                      .once()
+                      .write_callback(on_write)
+                      .build();
 
-    auto tens_event = std::make_unique<CountEvent>(1, 10);
-    tens_event->write_callback(on_write);
+    auto tens_event = builder
+                      .bind(STDOUT_FILENO)
+                      .count(10)
+                      .write_callback(on_write)
+                      .build();
 
     Selecter selecter{};
     selecter.add(std::move(once_event));

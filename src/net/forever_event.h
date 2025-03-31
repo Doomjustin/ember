@@ -7,7 +7,10 @@ namespace ember::net {
 
 class ForeverEvent : public Event {
 public:
-    explicit ForeverEvent(int id) : Event(id) {}
+    explicit ForeverEvent(int id)
+      : Event(id)
+    {
+    }
 
     ~ForeverEvent() = default;
 

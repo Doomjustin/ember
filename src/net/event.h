@@ -44,7 +44,7 @@ public:
     constexpr int id() const noexcept { return id_; }
 
 protected:
-    virtual void on_event(const std::system_error* error) = 0;
+    virtual void on_event(const std::system_error* error) {}
 
 private:
     int id_ = -1;
