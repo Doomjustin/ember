@@ -37,4 +37,5 @@ target_link_libraries(base
         fmt::fmt
         spdlog::spdlog
         doctest::doctest
+        Boost::headers
 )
