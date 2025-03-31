@@ -10,3 +10,6 @@
 [submodule "third-party/doctest"]
 	path = third-party/doctest
 	url = https://github.com/onqtam/doctest.git
+[submodule "third-party/boost"]
+	path = third-party/boost
+	url = https://github.com/boostorg/boost

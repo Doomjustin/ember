@@ -10,12 +10,12 @@
 namespace ember::net {
 
 Socket::Socket(int socket)
-  : socket(socket)
+  : socket_(socket)
 {
 }
 
 Socket::Socket(Socket&& other) noexcept
-  : socket{ std::exchange(other.socket, INVALID_SOCKET) }
+  : socket_{ std::exchange(other.socket_, INVALID_SOCKET) }
 {
 }
 
@@ -37,9 +37,9 @@ Socket::~Socket()
 void Socket::close()
 {
     Expects(is_valid());
-    posix::close(socket);
-    socket = INVALID_SOCKET;
-    spdlog::trace("Socket[] closed.", socket);
+    posix::close(socket_);
+    socket_ = INVALID_SOCKET;
+    spdlog::trace("Socket[] closed.", socket_);
 }
 
 } // namespace ember::net

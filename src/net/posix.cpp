@@ -1,12 +1,13 @@
 #include "posix.h"
 
+#include <cstddef>
+#include <doctest.h>
 #include <fmt/base.h>
 #include <spdlog/spdlog.h>
-#include <doctest.h>
 
-#include <unistd.h>
-#include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #include <source_location>
 #include <system_error>
@@ -42,6 +43,20 @@ int socket(int domain, int type, int protocol)
     auto sock_fd = ::socket(domain, type, protocol);
     CHECK(sock_fd);
     return sock_fd;
+}
+
+std::size_t read(int fd, void* buffer, std::size_t size)
+{
+    auto res = ::read(fd, buffer, size);
+    check_result(res);
+    return res;
+}
+
+std::size_t write(int fd, const void* data, std::size_t size)
+{
+    auto res = ::write(fd, data, size);
+    check_result(res);
+    return res;
 }
 
 } // namespace ember::net::posix

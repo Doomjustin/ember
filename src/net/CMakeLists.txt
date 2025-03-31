@@ -1,9 +1,10 @@
 add_library(ember_net 
     STATIC
-        socket.cpp
-        socket.h
+        endpoint.h
         posix.cpp
         posix.h
+        socket.cpp
+        socket.h
 )
 
 target_include_directories(ember_net INTERFACE ${CMAKE_CURRENT_LIST_DIR})

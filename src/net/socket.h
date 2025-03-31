@@ -18,14 +18,14 @@ public:
 
     void close();
 
-    constexpr bool is_valid() const noexcept { return socket != INVALID_SOCKET; }
+    constexpr bool is_valid() const noexcept { return socket_ != INVALID_SOCKET; }
 
-    constexpr int id() const noexcept { return socket; }
+    constexpr int id() const noexcept { return socket_; }
 
 private:
     static constexpr int INVALID_SOCKET = -1;
 
-    int socket;
+    int socket_;
 };
 
 } // namespace ember::net
