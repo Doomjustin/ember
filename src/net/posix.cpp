@@ -1,13 +1,13 @@
 #include "posix.h"
 
-#include <cstddef>
-#include <doctest.h>
 #include <fmt/base.h>
 #include <spdlog/spdlog.h>
 
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <arpa/inet.h>
+#include <cstddef>
 
 #include <source_location>
 #include <system_error>
@@ -41,7 +41,7 @@ void close(int fd)
 int socket(int domain, int type, int protocol)
 {
     auto sock_fd = ::socket(domain, type, protocol);
-    CHECK(sock_fd);
+    check_result(sock_fd);
     return sock_fd;
 }
 
@@ -59,18 +59,41 @@ std::size_t write(int fd, const void* data, std::size_t size)
     return res;
 }
 
-} // namespace ember::net::posix
-
-
-TEST_CASE("if resutl is INVALID_RESULT, should throw system_error")
+int accept(int fd, sockaddr* addr, socklen_t* len)
 {
-    using namespace ember::net::posix;
-    auto errno_backup = errno;
-    errno = EINVAL;
-
-    REQUIRE_THROWS_AS(check_result(INVALID_RESULT), std::system_error);
-
-    errno = errno_backup;
-
-    REQUIRE_NOTHROW(check_result(0));
+    auto res = ::accept(fd, addr, len);
+    check_result(res);
+    return res;
 }
+
+void listen(int sock, int backlog)
+{
+    auto res = ::listen(sock, backlog);
+    check_result(res);
+}
+
+void bind(int sock, const sockaddr* addr, socklen_t len)
+{
+    auto res = ::bind(sock, addr, len);
+    check_result(res);
+}
+
+void connect(int sock, const sockaddr* addr, socklen_t len)
+{
+    auto res = ::connect(sock, addr, len);
+    check_result(res);
+}
+
+void inet_ntop(int af, const void* src, char* dst, std::size_t length)
+{
+    auto res = ::inet_ntop(af, src, dst, length);
+    check_result(res);
+}
+
+void inet_pton(int af, const char* src, void* dst)
+{
+    auto res = ::inet_pton(AF_INET, src, dst);
+    check_result(res);
+}
+
+} // namespace ember::net::posix

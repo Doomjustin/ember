@@ -1,42 +1,34 @@
-#include "event_builder.h"
-#include "selecter.h"
+#include "endpoint.h"
+#include "ipv4_accepter.h"
 
 #include <fmt/base.h>
 
-#include <iostream>
-#include <system_error>
 #include <cstdlib>
 #include <unistd.h>
+#include <memory>
 
-void on_write(const std::system_error* error)
-{
-    std::cout << "on_write\n";
-}
+using namespace ember::net;
 
 int main(int argc, char* argv[])
 {
-    using namespace ember::net;
+    Endpoint local{  .port=12345 };
 
-    EventBuilder builder{};
-    auto once_event = builder
-                      .bind(STDOUT_FILENO)
-                      .once()
-                      .write_callback(on_write)
-                      .build();
+    auto accepter = std::make_unique<tcp::IPv4Accepter>();
+    accepter->bind(local);
+    accepter->listen();
 
-    auto tens_event = builder
-                      .bind(STDOUT_FILENO)
-                      .count(10)
-                      .write_callback(on_write)
-                      .build();
+    auto connection = accepter->accept();
 
-    Selecter selecter{};
-    selecter.add(std::move(once_event));
-    selecter.add(std::move(tens_event));
+    fmt::println("accepted connection from {}:{}", connection.remote().host, connection.remote().port);
 
-    while (!selecter.empty()) {
-        fmt::println("{} events", selecter.size());
-        selecter.schedule();
+    char buffer[1024];
+    while (true) {
+        auto bytes_read = connection.read(buffer, sizeof(buffer));
+        buffer[bytes_read] = '\0';
+        if (bytes_read == 0) break;
+
+        fmt::print("Received {} bytes: {}", bytes_read, buffer);
+        connection.write(buffer, bytes_read);
     }
 
     return EXIT_SUCCESS;

@@ -1,8 +1,9 @@
 #ifndef EMBER_NET_EVENT_SCHEDULER_H
 #define EMBER_NET_EVENT_SCHEDULER_H
 
-#include "ember/noncopyable.h"
 #include "event.h"
+
+#include "ember/noncopyable.h"
 
 #include <cstddef>
 #include <memory>
