@@ -4,9 +4,11 @@
 #include "connection.h"
 #include "endpoint.h"
 #include "socket.h"
+#include "defination.h"
 
 #include "ember/noncopyable.h"
 
+#include <memory>
 #include <optional>
 
 namespace ember::net::tcp {
@@ -44,6 +46,9 @@ protected:
 
     static Connection create_connection(int socket, const Endpoint& local, const Endpoint& remote);
 };
+
+
+std::unique_ptr<Acceptor> acceptor(InternetProtocol ip);
 
 } // namespace ember::net::tcp
 

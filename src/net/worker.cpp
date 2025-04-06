@@ -1,6 +1,7 @@
 #include "worker.h"
 #include "event_builder.h"
-#include "spdlog/spdlog.h"
+
+#include <spdlog/spdlog.h>
 
 #include <utility>
 
@@ -25,9 +26,7 @@ Worker::Worker(Worker&& other) noexcept
     scheduler_{ std::exchange(other.scheduler_, nullptr) },
     connections_{ std::move(other.connections_) },
     noticifier_{ std::move(other.noticifier_) }
-{
-    running_ = other.running_.exchange(false);
-}
+{}
 
 Worker& Worker::operator=(Worker&& other) noexcept
 {
@@ -44,6 +43,7 @@ void Worker::work()
         scheduler_->schedule();
         erase_completed_connections();
     }
+    spdlog::trace("Worker({}) Stopped", id_);
 }
 
 void Worker::add(tcp::Connection connection, ConnectionCallback connection_callback)
@@ -56,11 +56,6 @@ void Worker::add(tcp::Connection connection, ConnectionCallback connection_callb
     noticifier_.notify();
 }
 
-void Worker::stop()
-{
-    running_ = false;
-    noticifier_.notify();
-}
 
 std::unique_ptr<Event> Worker::create_event(tcp::Connection& connection, ConnectionCallback connection_callback)
 {

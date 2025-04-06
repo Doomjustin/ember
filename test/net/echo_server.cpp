@@ -8,12 +8,9 @@
 #include <spdlog/spdlog.h>
 
 #include <cstdlib>
-#include <sys/select.h>
+#include <ctime>
 #include <system_error>
 #include <unistd.h>
-#include <vector>
-#include <ctime>
-#include <sys/eventfd.h>
 
 using namespace ember::net;
 using namespace std;
@@ -33,18 +30,25 @@ void echo(const std::system_error* error, tcp::Connection& connection)
     connection.write(buffer, read_bytes);
 }
 
+void stop_master(Master& master)
+{
+    this_thread::sleep_for(5s);
+    master.stop();
+}
 
 int main(int argc, char* argv[])
 {
     spdlog::set_level(spdlog::level::trace);
-    std::vector<tcp::Connection> connections{};
     Endpoint local{ .port=12345 };
+
 
     Master master{ 4 };
     master.local(local);
     master.connection_callback(echo);
 
-    master.work();
+    std::jthread stop_thread{ stop_master, std::ref(master) };
 
+    master.work();
+    spdlog::info("Master stopped");
     return EXIT_SUCCESS;
 }
