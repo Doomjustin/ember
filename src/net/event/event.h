@@ -1,7 +1,7 @@
 #ifndef EMBER_NET_EVENT_H
 #define EMBER_NET_EVENT_H
 
-#include "ember/noncopyable.h"
+#include "noncopyable.h"
 
 #include <atomic>
 #include <functional>

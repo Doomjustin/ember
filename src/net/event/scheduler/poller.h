@@ -1,7 +1,7 @@
 #ifndef EMBER_NET_POLLER_H
 #define EMBER_NET_POLLER_H
 
-#include "event_scheduler.h"
+#include "net/event/event_scheduler.h"
 
 #include <sys/poll.h>
 #include <vector>

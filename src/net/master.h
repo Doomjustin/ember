@@ -1,13 +1,13 @@
 #ifndef EMBER_NET_MASTER_H
 #define EMBER_NET_MASTER_H
 
-#include "acceptor.h"
 #include "defination.h"
 #include "endpoint.h"
-#include "event_scheduler.h"
-#include "scheduler_noticifier.h"
 #include "worker.h"
 #include "configuration.h"
+#include "acceptor/acceptor.h"
+#include "event/event_scheduler.h"
+#include "event/scheduler_noticifier.h"
 
 #include <memory>
 #include <thread>
@@ -20,7 +20,7 @@ public:
     using ConnectionCallback = Worker::ConnectionCallback;
     using AcceptedCallback = std::function<void (const tcp::Connection&)>;
 
-    explicit Master(int num_workers, InternetProtocol ip = InternetProtocol::IPv4);
+    explicit Master(unsigned int num_workers, InternetProtocol ip = InternetProtocol::IPv4);
 
     ~Master();
 
@@ -42,6 +42,8 @@ public:
     }
 
     void stop();
+
+    constexpr bool running() const noexcept { return running_; }
 
 private:
     // 如果使用vector<Worker>的话，在创建thread时，

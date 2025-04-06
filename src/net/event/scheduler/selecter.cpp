@@ -4,7 +4,6 @@
 #include <cerrno>
 #include <sys/select.h>
 #include <sys/time.h>
-#include <system_error>
 
 namespace ember::net {
 

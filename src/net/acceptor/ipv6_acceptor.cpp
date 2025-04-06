@@ -1,7 +1,7 @@
 #include "ipv6_acceptor.h"
-#include "connection.h"
-#include "endpoint.h"
-#include "posix.h"
+#include "net/connection.h"
+#include "net/endpoint.h"
+#include "net/posix.h"
 
 #include <gsl/gsl>
 

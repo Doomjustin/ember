@@ -1,38 +1,43 @@
 add_library(ember_net 
     STATIC
-        acceptor.cpp
-        acceptor.h
+        acceptor/acceptor.cpp
+        acceptor/acceptor.h
+        acceptor/ipv4_acceptor.cpp
+        acceptor/ipv4_acceptor.h
+        acceptor/ipv6_acceptor.cpp
+        acceptor/ipv6_acceptor.h
+        event/scheduler/poller.cpp
+        event/scheduler/poller.h
+        event/scheduler/selecter.cpp
+        event/scheduler/selecter.h
+        event/count_event.cpp
+        event/count_event.h
+        event/event_builder.cpp
+        event/event_builder.h
+        event/event_scheduler.cpp
+        event/event_scheduler.h
+        event/event.cpp
+        event/event.h
+        event/forever_event.h
+        event/once_event.h
+        event/scheduler_noticifier.cpp
+        event/scheduler_noticifier.h
+        http/http_request.cpp
+        http/http_request.h
+        http/http_response.cpp
+        http/http_response.h
+        http/http_server.cpp
+        http/http_server.h
         connection.cpp
         connection.h
-        count_event.cpp
-        count_event.h
         defination.h
         endpoint.h
-        event_builder.cpp
-        event_builder.h
-        event_loop.h
-        event_scheduler.cpp
-        event_scheduler.h
-        event.cpp
-        event.h
         configuration.cpp
         configuration.h
-        forever_event.h
-        ipv4_acceptor.cpp
-        ipv4_acceptor.h
-        ipv6_acceptor.cpp
-        ipv6_acceptor.h
         master.cpp
         master.h
-        once_event.h
-        poller.cpp
-        poller.h
         posix.cpp
         posix.h
-        scheduler_noticifier.cpp
-        scheduler_noticifier.h
-        selecter.cpp
-        selecter.h
         socket.cpp
         socket.h
         worker.cpp

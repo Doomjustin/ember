@@ -7,7 +7,9 @@ namespace ember::net::tcp {
 
 Connection::Connection(Socket socket)
   : socket_{ std::move(socket) }
-{}
+{
+    posix::nonblocking(id());
+}
 
 Connection::~Connection()
 {

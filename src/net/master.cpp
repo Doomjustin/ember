@@ -1,7 +1,7 @@
 #include "master.h"
 #include "defination.h"
-#include "event_builder.h"
 #include "worker.h"
+#include "event/event_builder.h"
 
 #include <spdlog/spdlog.h>
 
@@ -11,7 +11,7 @@
 
 namespace ember::net {
 
-Master::Master(int num_workers, InternetProtocol ip)
+Master::Master(unsigned int num_workers, InternetProtocol ip)
   : acceptor_{ tcp::acceptor(ip) }
 {
     for (int i = 0; i < num_workers; ++i) {

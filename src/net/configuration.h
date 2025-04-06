@@ -1,7 +1,7 @@
 #ifndef EMBER_NET_CONFIGURATION_H
 #define EMBER_NET_CONFIGURATION_H
 
-#include "event_scheduler.h"
+#include "event/event_scheduler.h"
 
 #include <memory>
 

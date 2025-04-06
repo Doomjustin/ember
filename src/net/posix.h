@@ -34,6 +34,8 @@ void keep_alive(int sock, bool enable);
 
 int noticify_fd(int count);
 
+void nonblocking(int fd);
+
 } // namespace ember::net::posix
 
 #endif // !EMBER_NET_POSIX_H

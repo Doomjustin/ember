@@ -8,8 +8,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <fcntl.h>
 #include <cstddef>
-
 #include <source_location>
 #include <system_error>
 
@@ -123,6 +123,16 @@ int noticify_fd(int count)
     auto fd = ::eventfd(count, EFD_NONBLOCK | EFD_CLOEXEC);
     check_result(fd);
     return fd;
+}
+
+void nonblocking(int fd)
+{
+    int flags = ::fcntl(fd, F_GETFL, 0);
+    check_result(flags);
+
+    flags |= O_NONBLOCK;
+    auto result = ::fcntl(fd, F_SETFL, flags);
+    check_result(result);
 }
 
 } // namespace ember::net::posix

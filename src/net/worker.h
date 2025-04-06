@@ -1,11 +1,11 @@
 #ifndef EMBER_NET_WORKER_H
 #define EMBER_NET_WORKER_H
 
-#include "acceptor.h"
-#include "event_scheduler.h"
-#include "scheduler_noticifier.h"
 #include "connection.h"
 #include "configuration.h"
+#include "acceptor/acceptor.h"
+#include "event/event_scheduler.h"
+#include "event/scheduler_noticifier.h"
 
 #include <atomic>
 #include <functional>

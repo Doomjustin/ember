@@ -4,7 +4,7 @@ add_library(ember::base ALIAS ember_base)
 
 target_link_libraries(ember_base INTERFACE base)
 
-target_include_directories(ember_base INTERFACE "${PROJECT_SOURCE_DIR}/include/")
+target_include_directories(ember_base INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}")
 
 target_compile_features(ember_base INTERFACE cxx_std_23)
 
@@ -14,7 +14,7 @@ target_compile_definitions(ember_base
         $<$<CONFIG:Release>:DOCTEST_CONFIG_DISABLE>
 )
 
-configure_file(config.h.in ${PROJECT_SOURCE_DIR}/include/ember/config.h @ONLY)
+configure_file(config.h.in ${CMAKE_CURRENT_LIST_DIR}/config.h @ONLY)
 
 add_subdirectory(net)
 

@@ -1,7 +1,6 @@
 #include "poller.h"
 
 #include <chrono>
-#include <ranges>
 #include <algorithm>
 #include <stdexcept>
 #include <sys/poll.h>

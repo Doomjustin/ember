@@ -2,9 +2,9 @@
 #define EMBER_NET_CONNECTION_H
 
 #include "endpoint.h"
-#include "scheduler_noticifier.h"
 #include "socket.h"
-#include "event.h"
+#include "event/event.h"
+#include "event/scheduler_noticifier.h"
 
 #include <gsl/gsl>
 
