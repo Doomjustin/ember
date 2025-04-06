@@ -1,6 +1,6 @@
-#include "connection.h"
+#include "tcp/connection.h"
+#include "tcp/master.h"
 #include "endpoint.h"
-#include "master.h"
 
 #include <fmt/base.h>
 #include <fmt/format.h>
@@ -12,11 +12,12 @@
 #include <system_error>
 #include <unistd.h>
 
-using namespace ember::net;
+using namespace ember;
+using namespace ember::tcp;
 using namespace std;
 using namespace std::chrono_literals;
 
-void echo(const std::system_error* error, tcp::Connection& connection)
+void echo(const std::system_error* error, Connection& connection)
 {
     char buffer[1024];
     spdlog::info("Echoing data from {}:{}", connection.remote().host, connection.remote().port);
