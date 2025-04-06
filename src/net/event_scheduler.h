@@ -2,7 +2,7 @@
 #define EMBER_NET_EVENT_SCHEDULER_H
 
 #include "event.h"
-
+#include "defination.h"
 #include "ember/noncopyable.h"
 
 #include <cstddef>
@@ -30,6 +30,9 @@ protected:
 
     void erase_invalid_events();
 };
+
+
+std::unique_ptr<EventScheduler> scheduler(SchedulerType type);
 
 } // namespace ember::net
 

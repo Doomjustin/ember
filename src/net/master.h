@@ -53,7 +53,7 @@ private:
     std::unique_ptr<tcp::Acceptor> acceptor_;
 
     SchedulerNoticifier noticifier_;
-    std::unique_ptr<EventScheduler> scheduler_ = std::make_unique<Selecter>();
+    std::unique_ptr<EventScheduler> scheduler_ = scheduler(SchedulerType::Select);
 
     ConnectionCallback connection_callback_;
     AcceptedCallback accepted_callback_;

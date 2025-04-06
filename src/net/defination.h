@@ -13,6 +13,13 @@ enum class TransportProtocol {
     UDP
 };
 
+enum class SchedulerType {
+    Select,
+    Poll,
+    Epoll,
+    KQueue
+};
+
 } // namespace ember::net
 
 #endif // !EMBER_NET_DEFINATION_H

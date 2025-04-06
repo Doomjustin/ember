@@ -5,13 +5,11 @@
 #include "event_scheduler.h"
 #include "scheduler_noticifier.h"
 #include "connection.h"
-#include "selecter.h"
 
 #include <atomic>
 #include <functional>
 #include <system_error>
 #include <memory>
-#include <thread>
 
 namespace ember::net {
 
@@ -57,7 +55,7 @@ private:
     std::atomic<bool> running_ = true;
 
     std::mutex m_;
-    std::unique_ptr<EventScheduler> scheduler_ = std::make_unique<Selecter>();
+    std::unique_ptr<EventScheduler> scheduler_ = scheduler(SchedulerType::Select);
     std::vector<tcp::Connection> connections_;
     SchedulerNoticifier noticifier_;
 

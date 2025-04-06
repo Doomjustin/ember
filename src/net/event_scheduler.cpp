@@ -1,4 +1,5 @@
 #include "event_scheduler.h"
+#include "selecter.h"
 
 #include <memory>
 #include <vector>
@@ -20,6 +21,16 @@ void EventScheduler::erase_invalid_events()
 {
     auto is_invalid = [](const auto& event) { return !event->is_valid(); };
     std::erase_if(events_, is_invalid);
+}
+
+std::unique_ptr<EventScheduler> scheduler(SchedulerType type)
+{
+    switch (type) {
+    case SchedulerType::Select:
+        return std::make_unique<Selecter>();
+    default:
+        throw std::runtime_error("Unsupported scheduler type");
+    }
 }
 
 } // namespace ember::net

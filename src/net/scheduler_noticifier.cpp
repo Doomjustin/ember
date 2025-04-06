@@ -43,6 +43,7 @@ void SchedulerNoticifier::notify()
 {
     Expects(id() != -1);
 
+    spdlog::trace("SchedulerNoticifier(id={}) notifying", id());
     std::uint64_t value = 1;
     auto write_bytes = posix::write(id(), &value, sizeof(value));
     if (write_bytes != sizeof(value)) {
