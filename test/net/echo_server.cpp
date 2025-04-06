@@ -39,9 +39,8 @@ void stop_master(Master& master)
 int main(int argc, char* argv[])
 {
     spdlog::set_level(spdlog::level::trace);
+
     Endpoint local{ .port=12345 };
-
-
     Master master{ 4 };
     master.local(local);
     master.connection_callback(echo);

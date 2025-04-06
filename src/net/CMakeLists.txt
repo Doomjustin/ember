@@ -6,6 +6,7 @@ add_library(ember_net
         connection.h
         count_event.cpp
         count_event.h
+        defination.h
         endpoint.h
         event_builder.cpp
         event_builder.h
@@ -24,7 +25,6 @@ add_library(ember_net
         once_event.h
         posix.cpp
         posix.h
-        protocol.h
         scheduler_noticifier.cpp
         scheduler_noticifier.h
         selecter.cpp

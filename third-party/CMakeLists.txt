@@ -23,8 +23,6 @@ target_compile_features(doctest INTERFACE cxx_std_23)
 
 add_library(doctest::doctest ALIAS doctest)
 
-add_subdirectory(boost EXCLUDE_FROM_ALL)
-
 
 set(BUILD_TESTING ${BUILD_TESTING_BCKP} CACHE BOOL "Build tests (default variable for CTest)" FORCE) #Set it back to its past value
 
@@ -37,5 +35,4 @@ target_link_libraries(base
         fmt::fmt
         spdlog::spdlog
         doctest::doctest
-        Boost::headers
 )
