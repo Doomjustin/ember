@@ -3,6 +3,7 @@
 #include <fmt/base.h>
 #include <spdlog/spdlog.h>
 
+#include <sys/eventfd.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -94,6 +95,34 @@ void inet_pton(int af, const char* src, void* dst)
 {
     auto res = ::inet_pton(AF_INET, src, dst);
     check_result(res);
+}
+
+void reuse_address(int sock, bool enable)
+{
+    int optval = enable ? 1 : 0;
+    auto res = ::setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval));
+    check_result(res);
+}
+
+void reuse_port(int sock, bool enable)
+{
+    int optval = enable ? 1 : 0;
+    auto res = ::setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &optval, sizeof(optval));
+    check_result(res);
+}
+
+void keep_alive(int sock, bool enable)
+{
+    int optval = enable ? 1 : 0;
+    auto res = ::setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof(optval));
+    check_result(res);
+}
+
+int noticify_fd(int count)
+{
+    auto fd = ::eventfd(count, EFD_NONBLOCK | EFD_CLOEXEC);
+    check_result(fd);
+    return fd;
 }
 
 } // namespace ember::net::posix

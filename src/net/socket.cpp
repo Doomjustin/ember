@@ -29,15 +29,16 @@ Socket& Socket::operator=(Socket&& other) noexcept
 
 Socket::~Socket()
 {
-    if (is_valid()) close();
+    if (is_valid())
+        close();
 }
 
 void Socket::close()
 {
     Expects(is_valid());
     posix::close(socket_);
+    spdlog::trace("Socket[{}] closed.", socket_);
     socket_ = INVALID_SOCKET;
-    spdlog::trace("Socket[] closed.", socket_);
 }
 
 } // namespace ember::net

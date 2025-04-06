@@ -1,4 +1,4 @@
-#include "ipv4_accepter.h"
+#include "ipv4_acceptor.h"
 #include "connection.h"
 #include "endpoint.h"
 #include "posix.h"
@@ -35,27 +35,21 @@ sockaddr_in cast(const Endpoint& endpoint)
     return addr;
 }
 
-IPv4Accepter::IPv4Accepter()
-  : Accepter{ posix::socket(AF_INET, SOCK_STREAM, 0) }
+IPv4Acceptor::IPv4Acceptor()
+  : Acceptor{ posix::socket(AF_INET, SOCK_STREAM, 0) }
 {}
 
-Connection IPv4Accepter::accept() const
+Connection IPv4Acceptor::accept() const
 {
     Expects(is_valid());
 
     sockaddr_in addr{};
     socklen_t len = sizeof(addr);
-
     auto remote_socket = posix::accept(id(), reinterpret_cast<sockaddr*>(&addr), &len);
-
-    Connection connection{ remote_socket };
-    connection.remote(cast(addr));
-    connection.local(local());
-
-    return connection;
+    return create_connection(remote_socket, local(), cast(addr));
 }
 
-void IPv4Accepter::bind(const Endpoint& local)
+void IPv4Acceptor::bind(const Endpoint& local)
 {
     auto address = cast(local);
     posix::bind(id(), reinterpret_cast<sockaddr*>(&address), sizeof(address));

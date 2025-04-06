@@ -11,7 +11,7 @@ public:
 
     ~CountEvent() = default;
 
-    constexpr bool is_valid() const noexcept override { return count_ > 0; }
+    constexpr bool is_completed() const noexcept override { return count_ <= 0; }
 
 protected:
     void on_event(const std::system_error* error) override;

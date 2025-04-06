@@ -1,4 +1,4 @@
-#include "ipv6_accepter.h"
+#include "ipv6_acceptor.h"
 #include "connection.h"
 #include "endpoint.h"
 #include "posix.h"
@@ -38,26 +38,21 @@ sockaddr_in6 cast(const Endpoint& endpoint)
     return address;
 }
 
-IPv6Accepter::IPv6Accepter()
-  : Accepter{ posix::socket(AF_INET6, SOCK_STREAM, 0) }
+IPv6Acceptor::IPv6Acceptor()
+  : Acceptor{ posix::socket(AF_INET6, SOCK_STREAM, 0) }
 {}
 
-Connection IPv6Accepter::accept() const
+Connection IPv6Acceptor::accept() const
 {
     Expects(is_valid());
 
     sockaddr_in6 addr{};
     socklen_t len = sizeof(addr);
     auto remote_socket = posix::accept(id(), reinterpret_cast<sockaddr*>(&addr), &len);
-
-    Connection connection{ remote_socket };
-    connection.remote(cast(addr));
-    connection.local(local());
-
-    return connection;
+    return create_connection(remote_socket, local(), cast(addr));
 }
 
-void IPv6Accepter::bind(const Endpoint& local)
+void IPv6Acceptor::bind(const Endpoint& local)
 {
     Expects(is_valid());
 

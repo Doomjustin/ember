@@ -1,13 +1,13 @@
 #ifndef EMBER_NET_IPV4_ACCEPTER_H
 #define EMBER_NET_IPV4_ACCEPTER_H
 
-#include "accepter.h"
+#include "acceptor.h"
 
 namespace ember::net::tcp {
 
-class IPv4Accepter: public Accepter {
+class IPv4Acceptor: public Acceptor {
 public:
-    IPv4Accepter();
+    IPv4Acceptor();
 
     Connection accept() const override;
 

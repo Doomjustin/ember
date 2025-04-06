@@ -1,5 +1,6 @@
 #include "event_scheduler.h"
 
+#include <memory>
 #include <vector>
 
 namespace ember::net {

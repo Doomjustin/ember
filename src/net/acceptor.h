@@ -7,13 +7,15 @@
 
 #include "ember/noncopyable.h"
 
+#include <optional>
+
 namespace ember::net::tcp {
 
-class Accepter: Noncopyable {
+class Acceptor: Noncopyable {
 public:
-    explicit Accepter(int socket);
+    explicit Acceptor(int socket);
 
-    virtual ~Accepter() = default;
+    virtual ~Acceptor();
 
     virtual Connection accept() const = 0;
 
@@ -21,10 +23,7 @@ public:
 
     void listen(int backlog = 5);
 
-    Endpoint local() const noexcept
-    {
-        return local_;
-    }
+    Endpoint local() const noexcept;
 
     constexpr int id() const noexcept { return socket_.id(); }
 
@@ -33,9 +32,17 @@ public:
         return socket_.is_valid();
     }
 
+    void reuse_address(bool enable = true);
+
+    void reuser_port(bool enable = true);
+
+    void keep_alive(bool enable = true);
+
 protected:
     Socket socket_;
-    Endpoint local_;
+    std::optional<Endpoint> local_;
+
+    static Connection create_connection(int socket, const Endpoint& local, const Endpoint& remote);
 };
 
 } // namespace ember::net::tcp

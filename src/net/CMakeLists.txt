@@ -1,7 +1,7 @@
 add_library(ember_net 
     STATIC
-        accepter.cpp
-        accepter.h
+        acceptor.cpp
+        acceptor.h
         connection.cpp
         connection.h
         count_event.cpp
@@ -15,18 +15,24 @@ add_library(ember_net
         event.cpp
         event.h
         forever_event.h
-        ipv4_accepter.cpp
-        ipv4_accepter.h
-        ipv6_accepter.cpp
-        ipv6_accepter.h
+        ipv4_acceptor.cpp
+        ipv4_acceptor.h
+        ipv6_acceptor.cpp
+        ipv6_acceptor.h
+        master.cpp
+        master.h
         once_event.h
         posix.cpp
         posix.h
         protocol.h
+        scheduler_noticifier.cpp
+        scheduler_noticifier.h
         selecter.cpp
         selecter.h
         socket.cpp
         socket.h
+        worker.cpp
+        worker.h
 )
 
 target_include_directories(ember_net INTERFACE ${CMAKE_CURRENT_LIST_DIR})

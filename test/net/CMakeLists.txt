@@ -15,7 +15,7 @@ endfunction()
 
 add_net_test(check_result)
 
-add_executable(daytime_server daytime.cpp)
+add_executable(daytime_server daytime_server.cpp)
 target_link_libraries(daytime_server
     PRIVATE 
         ember::net

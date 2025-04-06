@@ -12,7 +12,7 @@ Event::Event(int id)
 
 Event::~Event()
 {
-    id_ = -1;
+    id_ = INVALID_ID;
 }
 
 void Event::handle_read(const std::system_error* error)
@@ -27,6 +27,13 @@ void Event::handle_write(const std::system_error* error)
     Expects(write_event_);
     on_event(error);
     write_event_(error);
+}
+
+bool Event::is_valid() const noexcept
+{
+    return id_ != INVALID_ID 
+           && !is_completed() 
+           && (read_event_ || write_event_);
 }
 
 } // namespace ember::net

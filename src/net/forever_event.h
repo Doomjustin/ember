@@ -13,7 +13,7 @@ public:
 
     ~ForeverEvent() = default;
 
-    constexpr bool is_valid() const noexcept override { return true; }
+    constexpr bool is_completed() const noexcept override { return false; }
 };
 
 } // namespace ember::net

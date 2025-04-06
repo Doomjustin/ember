@@ -3,6 +3,7 @@
 
 #include "ember/noncopyable.h"
 
+#include <atomic>
 #include <functional>
 #include <system_error>
 
@@ -39,15 +40,21 @@ public:
 
     void handle_write(const std::system_error* error);
 
-    virtual constexpr bool is_valid() const noexcept = 0;
+    bool is_valid() const noexcept;
 
     constexpr int id() const noexcept { return id_; }
+
+    void cancel() noexcept { id_ = INVALID_ID; }
 
 protected:
     virtual void on_event(const std::system_error* error) {}
 
+    virtual constexpr bool is_completed() const noexcept = 0;
+
 private:
-    int id_ = -1;
+    static constexpr int INVALID_ID = -1;
+
+    std::atomic<int> id_ = INVALID_ID;
     ReadCallback read_event_;
     WriteCallback write_event_;
 };
