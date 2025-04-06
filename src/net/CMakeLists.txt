@@ -15,6 +15,8 @@ add_library(ember_net
         event_scheduler.h
         event.cpp
         event.h
+        configuration.cpp
+        configuration.h
         forever_event.h
         ipv4_acceptor.cpp
         ipv4_acceptor.h
@@ -23,6 +25,8 @@ add_library(ember_net
         master.cpp
         master.h
         once_event.h
+        poller.cpp
+        poller.h
         posix.cpp
         posix.h
         scheduler_noticifier.cpp

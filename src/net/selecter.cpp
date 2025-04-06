@@ -8,17 +8,21 @@
 
 namespace ember::net {
 
+void Selecter::schedule(Duration timeout)
+{
+    struct timeval tv{};
+    auto seconds = std::chrono::duration_cast<std::chrono::seconds>(timeout);
+    auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(timeout - seconds);
+
+    tv.tv_sec = static_cast<long>(seconds.count());
+    tv.tv_usec = static_cast<long>(microseconds.count());
+
+    select(&tv);
+}
+
 void Selecter::schedule()
 {
-    prepare();
-
-    auto ready_fds = ::select(max_fd_ + 1, &read_fds_, &write_fds_, &except_fds_, nullptr);
-
-    if (ready_fds == -1) current_error_ = std::system_error{ errno, std::system_category(), "select error" };
-
-    dispatch(ready_fds);
-
-    erase_invalid_events();
+    select(nullptr);
 }
 
 void Selecter::prepare()
@@ -44,24 +48,33 @@ void Selecter::dispatch(int ready_fds)
 {
     for (const auto& event : events_) {
         auto fd = event->id();
-        const std::system_error* error = nullptr;
-        if (FD_ISSET(fd, &except_fds_)) {
-            error = &current_error_;
+        if (FD_ISSET(fd, &except_fds_))
             --ready_fds;
-        }
 
         if (FD_ISSET(fd, &read_fds_)) {
-            event->handle_read(error);
+            event->handle_read(current_error_);
             --ready_fds;
         }
 
         if (FD_ISSET(fd, &write_fds_)) {
-            event->handle_write(error);
+            event->handle_write(current_error_);
             --ready_fds;
         }
 
         if (ready_fds <= 0) return;
     }
+}
+
+void Selecter::select(timeval* timeout)
+{
+    prepare();
+
+    auto ready_fds = ::select(max_fd_ + 1, &read_fds_, &write_fds_, &except_fds_, timeout);
+    check_result(ready_fds);
+
+    dispatch(ready_fds);
+
+    erase_invalid_events();
 }
 
 } // namespace ember::net

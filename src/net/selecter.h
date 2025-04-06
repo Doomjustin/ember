@@ -4,7 +4,6 @@
 #include "event_scheduler.h"
 
 #include <sys/select.h>
-#include <system_error>
 
 namespace ember::net {
 
@@ -12,14 +11,17 @@ class Selecter final: public EventScheduler {
 public:
     ~Selecter() = default;
 
+    void schedule(Duration timeout) override;
+
     void schedule() override;
+
+    void select(timeval* timeout);
 
 private:
     int max_fd_ = 0;
     fd_set read_fds_;
     fd_set write_fds_;
     fd_set except_fds_;
-    std::system_error current_error_;
 
     void prepare();
 

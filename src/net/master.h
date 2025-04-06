@@ -7,6 +7,7 @@
 #include "event_scheduler.h"
 #include "scheduler_noticifier.h"
 #include "worker.h"
+#include "configuration.h"
 
 #include <memory>
 #include <thread>
@@ -53,7 +54,7 @@ private:
     std::unique_ptr<tcp::Acceptor> acceptor_;
 
     SchedulerNoticifier noticifier_;
-    std::unique_ptr<EventScheduler> scheduler_ = scheduler(SchedulerType::Select);
+    std::unique_ptr<EventScheduler> scheduler_ = config::scheduler();
 
     ConnectionCallback connection_callback_;
     AcceptedCallback accepted_callback_;

@@ -5,6 +5,7 @@
 #include "event_scheduler.h"
 #include "scheduler_noticifier.h"
 #include "connection.h"
+#include "configuration.h"
 
 #include <atomic>
 #include <functional>
@@ -55,7 +56,7 @@ private:
     std::atomic<bool> running_ = true;
 
     std::mutex m_;
-    std::unique_ptr<EventScheduler> scheduler_ = scheduler(SchedulerType::Select);
+    std::unique_ptr<EventScheduler> scheduler_ = config::scheduler();
     std::vector<tcp::Connection> connections_;
     SchedulerNoticifier noticifier_;
 
