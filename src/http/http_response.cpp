@@ -1,5 +1,5 @@
 #include "http_response.h"
 
-namespace ember::http {
+namespace ember {
 
-} // namespace ember::http
+} // namespace ember

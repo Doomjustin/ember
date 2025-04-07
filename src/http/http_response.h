@@ -1,28 +1,31 @@
-#ifndef EMBER_NET_HTTP_RESPONSE_H
-#define EMBER_NET_HTTP_RESPONSE_H
+#ifndef EMBER_HTTP_RESPONSE_H
+#define EMBER_HTTP_RESPONSE_H
 
-#include "version.h"
-#include "status_code.h"
+#include "defination.h"
 
-namespace ember::http {
+#include <string>
+
+namespace ember {
 
 class HttpResponse {
 public:
-    constexpr Version version() const noexcept
+    constexpr http::Version version() const noexcept
     {
         return version_;
     }
 
-    constexpr StatusCode status_code() const noexcept
+    constexpr http::StatusCode status_code() const noexcept
     {
         return status_code_;
     }
 
+    std::string to_string() const;
+
 private:
-    Version version_;
-    StatusCode status_code_;
+    http::Version version_;
+    http::StatusCode status_code_;
 };
 
-} // namespace ember::net
+} // namespace ember
 
-#endif // !EMBER_NET_HTTP_RESPONSE_H
+#endif // !EMBER_HTTP_RESPONSE_H

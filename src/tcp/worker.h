@@ -1,8 +1,8 @@
-#ifndef EMBER_NET_WORKER_H
-#define EMBER_NET_WORKER_H
+#ifndef EMBER_TCP_WORKER_H
+#define EMBER_TCP_WORKER_H
 
 #include "connection.h"
-#include "tcp/acceptor/acceptor.h"
+#include "acceptor/acceptor.h"
 #include "event/event_scheduler.h"
 #include "event/scheduler_noticifier.h"
 
@@ -65,4 +65,4 @@ private:
 };
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_WORKER_H
+#endif // !EMBER_TCP_WORKER_H

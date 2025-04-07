@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_SOCKET_H
-#define EMBER_NET_SOCKET_H
+#ifndef EMBER_SOCKET_H
+#define EMBER_SOCKET_H
 
 namespace ember {
 
@@ -30,4 +30,4 @@ private:
 
 } // namespace ember
 
-#endif // !EMBER_NET_SOCKET_H
+#endif // !EMBER_SOCKET_H

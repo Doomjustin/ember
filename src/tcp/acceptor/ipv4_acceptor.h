@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_IPV4_ACCEPTER_H
-#define EMBER_NET_IPV4_ACCEPTER_H
+#ifndef EMBER_TCP_IPV4_ACCEPTER_H
+#define EMBER_TCP_IPV4_ACCEPTER_H
 
 #include "acceptor.h"
 
@@ -16,4 +16,4 @@ public:
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_IPV4_ACCEPTER_H
+#endif // !EMBER_TCP_IPV4_ACCEPTER_H

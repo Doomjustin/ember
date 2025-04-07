@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_EVENT_BUILDER_H
-#define EMBER_NET_EVENT_BUILDER_H
+#ifndef EMBER_TCP_EVENT_BUILDER_H
+#define EMBER_TCP_EVENT_BUILDER_H
 
 #include "event.h"
 
@@ -73,4 +73,4 @@ private:
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_EVENT_BUILDER_H
+#endif // !EMBER_TCP_EVENT_BUILDER_H

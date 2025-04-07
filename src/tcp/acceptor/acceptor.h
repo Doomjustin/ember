@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_ACCEPTER_H
-#define EMBER_NET_ACCEPTER_H
+#ifndef EMBER_TCP_ACCEPTER_H
+#define EMBER_TCP_ACCEPTER_H
 
 #include "noncopyable.h"
 #include "endpoint.h"
@@ -51,4 +51,4 @@ std::unique_ptr<Acceptor> acceptor(InternetProtocol ip);
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_ACCEPTER_H
+#endif // !EMBER_TCP_ACCEPTER_H

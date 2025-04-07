@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_EVENT_H
-#define EMBER_NET_EVENT_H
+#ifndef EMBER_TCP_EVENT_H
+#define EMBER_TCP_EVENT_H
 
 #include "noncopyable.h"
 
@@ -61,4 +61,4 @@ private:
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_EVENT_H
+#endif // !EMBER_TCP_EVENT_H

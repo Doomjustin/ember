@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_ONCE_EVENT_H
-#define EMBER_NET_ONCE_EVENT_H
+#ifndef EMBER_TCP_EVENT_ONCE_EVENT_H
+#define EMBER_TCP_EVENT_ONCE_EVENT_H
 
 #include "count_event.h"
 
@@ -16,4 +16,4 @@ public:
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_ONCE_EVENT_H
+#endif // !EMBER_TCP_EVENT_ONCE_EVENT_H

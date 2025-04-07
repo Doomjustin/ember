@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_MASTER_H
-#define EMBER_NET_MASTER_H
+#ifndef EMBER_TCP_MASTER_H
+#define EMBER_TCP_MASTER_H
 
 #include "worker.h"
 #include "defination.h"
@@ -69,4 +69,4 @@ private:
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_MASTER_H
+#endif // !EMBER_TCP_MASTER_H

@@ -24,7 +24,6 @@ include(Warnings)
 include(LTO)
 include(Coverage)
 include(CopyDllsForDebug)
-include(ClangFormat)
 
 find_lto(CXX)
 

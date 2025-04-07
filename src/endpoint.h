@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_ENDPOINT_H
-#define EMBER_NET_ENDPOINT_H
+#ifndef EMBER_ENDPOINT_H
+#define EMBER_ENDPOINT_H
 
 #include <cstdint>
 #include <string>
@@ -13,4 +13,4 @@ struct Endpoint {
 
 } // namespace ember
 
-#endif // !EMBER_NET_ENDPOINT_H
+#endif // !EMBER_ENDPOINT_H

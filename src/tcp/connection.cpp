@@ -28,6 +28,28 @@ std::size_t Connection::write(const void* buffer, std::size_t count)
     return posix::write(id(), buffer, count);
 }
 
+std::string Connection::read_line(const std::string_view delimiter)
+{
+    Expects(socket_.is_valid());
+    std::string line{};
+    char c;
+
+    while (true) {
+        auto read_bytes = posix::read(id(), &c, 1);
+
+        if (read_bytes == 0)
+            break;
+
+        line.push_back(c);
+        if (line.ends_with(delimiter)) {
+            line.erase(line.size() - delimiter.size());
+            break;
+        }
+    }
+
+    return line;
+}
+
 void Connection::close()
 {
     Expects(socket_.is_valid() && event_ && noticifier_);

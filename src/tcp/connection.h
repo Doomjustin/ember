@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_CONNECTION_H
-#define EMBER_NET_CONNECTION_H
+#ifndef EMBER_TCP_CONNECTION_H
+#define EMBER_TCP_CONNECTION_H
 
 #include "socket.h"
 #include "endpoint.h"
@@ -36,6 +36,8 @@ public:
     std::size_t read(void* buffer, std::size_t count);
 
     std::size_t write(const void* buffer, std::size_t count);
+
+    std::string read_line(const std::string_view delimiter = "\n");
 
     void close();
 
@@ -83,4 +85,4 @@ private:
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_CONNECTION_H
+#endif // !EMBER_TCP_CONNECTION_H

@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_EVENT_SCHEDULER_H
-#define EMBER_NET_EVENT_SCHEDULER_H
+#ifndef EMBER_TCP_EVENT_SCHEDULER_H
+#define EMBER_TCP_EVENT_SCHEDULER_H
 
 #include "event.h"
 #include "noncopyable.h"
@@ -57,4 +57,4 @@ std::unique_ptr<EventScheduler> scheduler(SchedulerType type);
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_EVENT_SCHEDULER_H
+#endif // !EMBER_TCP_EVENT_SCHEDULER_H

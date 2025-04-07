@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_SELECTER_H
-#define EMBER_NET_SELECTER_H
+#ifndef EMBER_TCP_EVENT_SCHEDULER_SELECTER_H
+#define EMBER_TCP_EVENT_SCHEDULER_SELECTER_H
 
 #include "tcp/event/event_scheduler.h"
 
@@ -30,4 +30,4 @@ private:
 
 } // namespace ember::tcp
 
-#endif // !EMBER_NET_SELECTER_H
+#endif // !EMBER_TCP_EVENT_SCHEDULER_SELECTER_H

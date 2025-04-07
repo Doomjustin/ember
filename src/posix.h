@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_POSIX_H
-#define EMBER_NET_POSIX_H
+#ifndef EMBER_POSIX_H
+#define EMBER_POSIX_H
 
 #include <cstddef>
 #include <sys/socket.h>
@@ -38,4 +38,4 @@ void nonblocking(int fd);
 
 } // namespace ember::posix
 
-#endif // !EMBER_NET_POSIX_H
+#endif // !EMBER_POSIX_H
