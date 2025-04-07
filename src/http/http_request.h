@@ -1,5 +1,5 @@
-#ifndef EMBER_NET_HTTP_REQUEST_H
-#define EMBER_NET_HTTP_REQUEST_H
+#ifndef EMBER_HTTP_REQUEST_H
+#define EMBER_HTTP_REQUEST_H
 
 #include "defination.h"
 #include "tcp/connection.h"
@@ -55,4 +55,4 @@ private:
 
 } // namespace ember
 
-#endif // !EMBER_NET_HTTP_REQUEST_H
+#endif // !EMBER_HTTP_REQUEST_H
