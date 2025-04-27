@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.29)
+cmake_minimum_required(VERSION 4.0.0)
 
-project(CppTemplate
+project(EMBER
     VERSION 0.0.1
     LANGUAGES C CXX
 )
@@ -26,8 +26,7 @@ include(CopyDllsForDebug)
 
 find_lto(CXX)
 
-
-add_subdirectory(third-party EXCLUDE_FROM_ALL)
+add_subdirectory(third-party)
 
 add_subdirectory(app)
 add_subdirectory(src)
@@ -35,7 +34,6 @@ add_subdirectory(src)
 if(${PROJECT_NAME}_BUILD_TESTS)
     set(TEST_RUNNER_PARAMS "--force-colors=true" CACHE STRING "Options to add to our test runners commands")
     list(APPEND CUSTOM_COVERAGE_EXCLUDE "/test/")
-    add_subdirectory(test)
 
     configure_file(
         ${CMAKE_CURRENT_LIST_DIR}/cmake/CTestCustom.cmake.in

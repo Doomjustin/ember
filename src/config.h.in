@@ -1,7 +1,7 @@
-#ifndef CPP_TEMPLATE_CONFIG_H
-#define CPP_TEMPLATE_CONFIG_H
+#ifndef EMBER_CONFIG_H
+#define EMBER_CONFIG_H
 
-namespace cpp_template {
+namespace ember {
 
 static constexpr auto PROJECT_VERSION = "@PROJECT_VERSION@";
 
@@ -15,6 +15,6 @@ static constexpr auto PROJECT_NAME = "@PROJECT_NAME@";
 
 static constexpr auto PROJECT_SOURCE_DIR = "@PROJECT_SOURCE_DIR@";
 
-} // namespace cpp_template
+} // namespace ember
 
-#endif // !CPP_TEMPLATE_CONFIG_H
+#endif // !EMBER_CONFIG_H
