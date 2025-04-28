@@ -11,6 +11,7 @@ module;
 export module ember.leveldb.coding;
 
 using namespace std;
+using gsl::narrow_cast;
 
 namespace ember::leveldb {
 
@@ -27,7 +28,7 @@ constexpr bool is_not_last_byte(T value)
 template<unsigned_integral T>
 constexpr uint8_t get_varint_byte(T value)
 {
-    return gsl::narrow_cast<uint8_t>(value | NotLastByte);
+    return narrow_cast<uint8_t>(value | NotLastByte);
 }
 
 export

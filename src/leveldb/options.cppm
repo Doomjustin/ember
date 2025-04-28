@@ -1,6 +1,6 @@
 module;
 
-#include <string>
+#include <cstdint>
 
 export module ember.leveldb.options;
 
@@ -10,13 +10,12 @@ namespace ember::leveldb {
 
 export
 struct Option {
-    string create_if_missing;
-    string error_if_exists;
-    string paranoid_checks;
-    string write_buffer_size;
-    string max_open_files;
-    string block_size;
-    string block_restart_interval;
+    bool create_if_missing;
+    bool error_if_exists;
+    bool paranoid_checks;
+    uint64_t write_buffer_size;
+    uint16_t max_open_files;
+    uint64_t block_size;
 };
 
 } // namespace ember::leveldb
