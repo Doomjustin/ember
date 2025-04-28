@@ -18,6 +18,7 @@ using namespace std;
 
 namespace ember {
 
+export
 template<typename T>
 class Generator: public ranges::view_interface<Generator<T>> {
 public:
@@ -118,6 +119,7 @@ private:
 };
 
 
+export
 template<integral T = int>
 Generator<T> range(T start, T end, int stride = 1)
 {
@@ -129,12 +131,14 @@ Generator<T> range(T start, T end, int stride = 1)
     co_return;
 }
 
+export
 template<integral T = int>
 Generator<T> range(T end)
 {
     return range(0, end, 1);
 }
 
+export
 template <typename T>
 Generator<T> range(const span<const T> list)
 {
@@ -142,14 +146,16 @@ Generator<T> range(const span<const T> list)
         co_yield element;
 }
 
+export
 template <typename R>
     requires ranges::contiguous_range<R> &&
-                ranges::sized_range<R>
+             ranges::sized_range<R>
 Generator<ranges::range_value_t<R>> range(R&& r)
 {
     return range(span<const ranges::range_value_t<R>>(r));
 }
 
+export
 template<integral T = int>
 Generator<T> fibonacci(int max_times)
 {
