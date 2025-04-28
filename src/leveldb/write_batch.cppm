@@ -176,6 +176,8 @@ private:
     vector<Record> records_;
 };
 
+
+export
 bool operator==(const WriteBatch& lhs, const WriteBatch& rhs) noexcept
 {
     if (lhs.size() != rhs.size())
@@ -185,11 +187,13 @@ bool operator==(const WriteBatch& lhs, const WriteBatch& rhs) noexcept
                  rhs.records_.begin());
 }
 
+export
 WriteBatch operator+(WriteBatch& lhs, const WriteBatch& rhs) noexcept
 {
     return lhs += rhs;
 }
 
+export
 ostream& operator<<(ostream& os, const WriteBatch& batch)
 {
     ranges::copy(batch.records_, ostream_iterator<Record>(os, "\n"));
