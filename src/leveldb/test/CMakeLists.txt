@@ -11,3 +11,5 @@ endfunction()
 
 add_ember_leveldb_test(coding)
 add_ember_leveldb_test(write_batch)
+add_ember_leveldb_test(log)
+add_ember_leveldb_test(export)

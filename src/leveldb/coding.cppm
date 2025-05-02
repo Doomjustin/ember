@@ -1,12 +1,12 @@
 module;
 
-#include <gsl/gsl>
 #include <doctest.h>
+#include <gsl/gsl>
 
 #include <ostream>
 #include <istream>
-#include <concepts>
 #include <sstream>
+#include <concepts>
 
 export module ember.leveldb.coding;
 

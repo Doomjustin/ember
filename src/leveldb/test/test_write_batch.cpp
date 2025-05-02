@@ -4,6 +4,7 @@
 import ember.leveldb.write_batch;
 
 
+
 void demo()
 {
     using namespace ember::leveldb;

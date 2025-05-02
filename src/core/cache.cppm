@@ -118,8 +118,8 @@ public:
             move_to_head(&values_[key]);
         }
         else {
-            auto [iter, succed] = values_.emplace(key, Node{ key, value });
-            Ensures(succed);
+            auto [iter, succeed] = values_.emplace(key, Node{ key, value });
+            Ensures(succeed);
             add_new_node(&iter->second);
 
             if (is_full())

@@ -7,10 +7,14 @@ target_sources(ember_leveldb
     FILES
         coding.cppm
         database.cppm
+        exceptions.cppm
         export.cppm
+        file_mutex.cppm
+        filename.cppm
         leveldb.cppm
         log.cppm
         options.cppm
+        version.cppm
         write_batch.cppm
 )
 
@@ -20,6 +24,12 @@ target_link_libraries(ember_leveldb
     PRIVATE 
         ember::core
         ember::dependency
+)
+
+target_compile_definitions(ember_leveldb
+    INTERFACE
+        $<$<CONFIG:Debug>:EMBER_DEBUG>
+        $<$<CONFIG:Release>:DOCTEST_CONFIG_DISABLE>
 )
 
 if(${PROJECT_NAME}_BUILD_TESTS)

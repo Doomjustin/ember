@@ -26,20 +26,20 @@ public:
     {
         WriteBatch batch{};
         batch.put(key, value);
-        write(batch);
+        write(std::move(batch));
     }
 
     void remove(const string_view key)
     {
         WriteBatch batch{};
         batch.remove(key);
-        write(batch);
+        write(std::move(batch));
     }
 
     [[nodiscard]]
     virtual optional<string> get(string_view key) const = 0;
 
-    virtual void write(const WriteBatch& batch) = 0;
+    virtual void write(WriteBatch batch) = 0;
 
     string_view name() const noexcept { return name_; }
 

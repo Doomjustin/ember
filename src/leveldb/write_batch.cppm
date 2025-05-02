@@ -1,7 +1,7 @@
 module;
 
-#include <fmt/format.h>
 #include <doctest.h>
+#include <fmt/format.h>
 
 #include <cstdint>
 #include <string>
@@ -10,6 +10,7 @@ module;
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <sstream>
 
 export module ember.leveldb.write_batch;
 
