@@ -31,6 +31,8 @@ add_subdirectory(third-party)
 add_subdirectory(app)
 add_subdirectory(src)
 
+add_subdirectory(exercise)
+
 if(${PROJECT_NAME}_BUILD_TESTS)
     set(TEST_RUNNER_PARAMS "--force-colors=true" CACHE STRING "Options to add to our test runners commands")
     list(APPEND CUSTOM_COVERAGE_EXCLUDE "/test/")
